@@ -20,7 +20,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
-            {{- if .Values.bpmnModels.enabled }}
+            {{- if .Values.testing.enabled }}
             - name: bpmn-models-volume
               mountPath: /app/resources/processes
             {{- end }}
@@ -37,7 +37,7 @@ spec:
               path: /
               port: http
       volumes:
-        {{- if .Values.bpmnModels.enabled }}
+        {{- if .Values.testing.enabled }}
         - name: bpmn-models-volume
           configMap:
             name: {{ include "my-app.fullname" . }}-bpmn-models
