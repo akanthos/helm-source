@@ -40,5 +40,5 @@ spec:
         {{- if .Values.testing.enabled }}
         - name: bpmn-models-volume
           configMap:
-            name: {{ include "hello-world.fullname" . }}-bpmn-models
+            name: bpmn-models
         {{- end }}
